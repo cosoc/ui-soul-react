@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  box-sizing: border-box;
+  height: 40px;
+  margin-top: 2px;
+  cursor: pointer;
+  padding: 5px;
+  width: 100%;
+  border-radius: 5px;
+  align-content: center;
+}
+
+.containerOnSelect {
+  display: flex;
+  box-sizing: border-box;
+  height: 40px;
+  margin-top: 2px;
+  cursor: pointer;
+  padding: 5px;
+  width: 100%;
+  background: green;
+  color: aliceblue;
+  border-radius: 5px;
+}
+
+.container:hover {
+  background-color: #cccc;
+}
