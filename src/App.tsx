@@ -1,7 +1,7 @@
-import {SMenu} from "@/components/SRMenu/SMenu";
-import {SMenuGen} from "@/components/SRMenu/SMenu/SMenuGen.ts";
-import {SMenuItemUI} from "@/components/SRMenu/SMenuUIExample/SMenuItemUI.tsx";
-import {SMenuItemGroupUI} from "@/components/SRMenu/SMenuUIExample/SMenuItemGroupUI.tsx";
+import {SMenu} from "@/components/SMenu/SMenu";
+import {SMenuGen} from "@/components/SMenu/SMenu/SMenuGen.ts";
+import {SMenuItemUI} from "@/components/SMenu/SMenuUIExample/SMenuItemUI.tsx";
+import {SMenuItemGroupUI} from "@/components/SMenu/SMenuUIExample/SMenuItemGroupUI.tsx";
 
 function App() {
 

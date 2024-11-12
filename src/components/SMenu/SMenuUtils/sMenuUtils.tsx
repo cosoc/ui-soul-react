@@ -1,4 +1,4 @@
-import {SMenuGen} from "@/components/SRMenu/SMenu/SMenuGen.ts";
+import {SMenuGen} from "@/components/SMenu/SMenu/SMenuGen.ts";
 import React, {ReactElement} from "react";
 
 

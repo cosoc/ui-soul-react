@@ -1,9 +1,9 @@
-import {SMenuItemGroupProps} from "@/components/SRMenu/SMenuItemGroup/SMenuItemGroupProps";
+import {SMenuItemGroupProps} from "@/components/SMenu/SMenuItemGroup/SMenuItemGroupProps";
 import React, {useContext} from "react";
-import {SMenuItem} from "@/components/SRMenu/SMenuItem/SMenuItem";
-import {SMenuItemType} from "@/components/SRMenu/SMenuModel/SMenuItemType";
-import {SMenuNodeStatus} from "@/components/SRMenu/SMenuModel/SMenuNodeStatus";
-import {SMenuContext} from "@/components/SRMenu/SMenuProvider";
+import {SMenuItem} from "@/components/SMenu/SMenuItem/SMenuItem";
+import {SMenuItemType} from "@/components/SMenu/SMenuModel/SMenuItemType";
+import {SMenuNodeStatus} from "@/components/SMenu/SMenuModel/SMenuNodeStatus";
+import {SMenuContext} from "@/components/SMenu/SMenuProvider";
 
 export const SMenuItemGroup = (props: SMenuItemGroupProps )=> {
 

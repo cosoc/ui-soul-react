@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { SMenuContextType } from "@/components/SRMenu/SMenuProvider/SMenuContextModel.ts";
-import { SMenuProviderProps } from "@/components/SRMenu/SMenuProvider/SMenuProviderProps.ts";
+import { SMenuContextType } from "@/components/SMenu/SMenuProvider/SMenuContextModel.ts";
+import { SMenuProviderProps } from "@/components/SMenu/SMenuProvider/SMenuProviderProps.ts";
 
 export const SMenuContext = React.createContext<SMenuContextType>({
     currentlyActiveNodePath: new Set<string>(),

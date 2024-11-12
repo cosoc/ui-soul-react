@@ -1,13 +1,13 @@
-import { SMenuProvider} from "@/components/SRMenu/SMenuProvider/SMenuProvider";
-import {SMenuProps} from "@/components/SRMenu/SMenu/SMenuProps.ts";
-import {SMenuItem} from "@/components/SRMenu/SMenuItem";
-import {SMenuItemGroup} from "@/components/SRMenu/SMenuItemGroup";
-import {SMenuItemType} from "@/components/SRMenu/SMenuModel/SMenuItemType";
-import {SMenuNodeStatus} from "@/components/SRMenu/SMenuModel/SMenuNodeStatus";
-import {SMenuGen} from "@/components/SRMenu/SMenu/SMenuGen.ts";
-import {isIncludesPermissions} from "@/components/SRMenu/SMenuUtils/permissionUtils.ts";
+import { SMenuProvider} from "@/components/SMenu/SMenuProvider/SMenuProvider";
+import {SMenuProps} from "@/components/SMenu/SMenu/SMenuProps.ts";
+import {SMenuItem} from "@/components/SMenu/SMenuItem";
+import {SMenuItemGroup} from "@/components/SMenu/SMenuItemGroup";
+import {SMenuItemType} from "@/components/SMenu/SMenuModel/SMenuItemType";
+import {SMenuNodeStatus} from "@/components/SMenu/SMenuModel/SMenuNodeStatus";
+import {SMenuGen} from "@/components/SMenu/SMenu/SMenuGen.ts";
+import {isIncludesPermissions} from "@/components/SMenu/SMenuUtils/permissionUtils.ts";
 import {useEffect, useState} from "react";
-import {getUI} from "@/components/SRMenu/SMenuUtils/sMenuUtils.tsx";
+import {getUI} from "@/components/SMenu/SMenuUtils/sMenuUtils.tsx";
 
 export const SMenu = (props: SMenuProps)=> {
 

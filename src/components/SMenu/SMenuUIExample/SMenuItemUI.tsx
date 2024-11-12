@@ -1,7 +1,7 @@
 import styles from "./SRMenuItemUI.module.scss"
-import {SMenuItemUIProps} from "@/components/SRMenu/SMenuUI";
+import {SMenuItemUIProps} from "@/components/SMenu/SMenuUI";
 import {useContext} from "react";
-import {SMenuContext} from "@/components/SRMenu/SMenuProvider/SMenuProvider.tsx";
+import {SMenuContext} from "@/components/SMenu/SMenuProvider/SMenuProvider.tsx";
 
 export const SMenuItemUI = <T extends Partial<SMenuItemUIProps>>(props: T) => {
     let {name,level,itemKey} = props;

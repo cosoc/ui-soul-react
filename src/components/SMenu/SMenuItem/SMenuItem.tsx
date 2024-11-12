@@ -1,8 +1,8 @@
-import { SMenuItemProps } from "@/components/SRMenu/SMenuItem/SMenuItemProps.ts";
+import { SMenuItemProps } from "@/components/SMenu/SMenuItem/SMenuItemProps.ts";
 import React, { useContext } from "react";
-import { SMenuContext } from "@/components/SRMenu/SMenuProvider";
-import { SMenuItemType } from "@/components/SRMenu/SMenuModel/SMenuItemType.ts";
-import { SMenuNodeStatus } from "@/components/SRMenu/SMenuModel/SMenuNodeStatus.ts";
+import { SMenuContext } from "@/components/SMenu/SMenuProvider";
+import { SMenuItemType } from "@/components/SMenu/SMenuModel/SMenuItemType.ts";
+import { SMenuNodeStatus } from "@/components/SMenu/SMenuModel/SMenuNodeStatus.ts";
 
 export const SMenuItem = (props: SMenuItemProps) => {
     const { itemKey,level, nodePath, disabled, itemDta, ui } = props;

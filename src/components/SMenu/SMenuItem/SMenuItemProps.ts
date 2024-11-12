@@ -1,6 +1,6 @@
 import {ReactElement} from "react";
-import {SMenuNodeStatus} from "@/components/SRMenu/SMenuModel/SMenuNodeStatus.ts";
-import {SMenuItemType} from "@/components/SRMenu/SMenuModel/SMenuItemType.ts";
+import {SMenuNodeStatus} from "@/components/SMenu/SMenuModel/SMenuNodeStatus.ts";
+import {SMenuItemType} from "@/components/SMenu/SMenuModel/SMenuItemType.ts";
 
 export interface SMenuItemProps {
     // 唯一key

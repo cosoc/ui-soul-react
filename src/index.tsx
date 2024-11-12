@@ -1,7 +1,7 @@
-import { SMenu } from "@/components/SRMenu/SMenu/SMenu.tsx";
-import {SMenuItem,SMenuItemProps} from "@/components/SRMenu/SMenuItem";
-import {SMenuItemGroup,SMenuItemGroupProps} from "components/SRMenu/SMenuItemGroup";
-import {SMenuProvider,SMenuContext} from "@/components/SRMenu/SMenuProvider";
+import { SMenu } from "@/components/SMenu/SMenu/SMenu.tsx";
+import {SMenuItem,SMenuItemProps} from "@/components/SMenu/SMenuItem";
+import {SMenuItemGroup,SMenuItemGroupProps} from "@/components/SMenu/SMenuItemGroup";
+import {SMenuProvider,SMenuContext} from "@/components/SMenu/SMenuProvider";
 
 export type {SMenuItemProps,SMenuItemGroupProps};
 export {

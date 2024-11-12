@@ -1,6 +1,6 @@
-import {SMenuItemType} from "@/components/SRMenu/SMenuModel/SMenuItemType.ts";
-import {SMenuGen} from "@/components/SRMenu/SMenu/SMenuGen.ts";
-import {SMenuNodeStatus} from "@/components/SRMenu/SMenuModel/SMenuNodeStatus.ts";
+import {SMenuItemType} from "@/components/SMenu/SMenuModel/SMenuItemType.ts";
+import {SMenuGen} from "@/components/SMenu/SMenu/SMenuGen.ts";
+import {SMenuNodeStatus} from "@/components/SMenu/SMenuModel/SMenuNodeStatus.ts";
 import React, {CSSProperties} from "react";
 
 // 菜单组件参数
