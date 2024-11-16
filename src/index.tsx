@@ -1,13 +1,7 @@
-import { SMenu } from "@/components/SMenu/SMenu/SMenu.tsx";
-import {SMenuItem,SMenuItemProps} from "@/components/SMenu/SMenuItem";
-import {SMenuItemGroup,SMenuItemGroupProps} from "@/components/SMenu/SMenuItemGroup";
-import {SMenuProvider,SMenuContext} from "@/components/SMenu/SMenuProvider";
-
-export type {SMenuItemProps,SMenuItemGroupProps};
-export {
-    SMenu,
-    SMenuItem,
-    SMenuItemGroup,
-    SMenuProvider,
-    SMenuContext
-};
+export * from  "@/components/SMenu/SMenu";
+export * from  "@/components/SMenu/SMenuItem";
+export * from  "@/components/SMenu/SMenuItemGroup";
+export * from  "@/components/SMenu/SMenuModel";
+export * from  "@/components/SMenu/SMenuProvider";
+export * from  "@/components/SMenu/SMenuModel";
+export * from  "@/components/SMenu/SMenuUI";

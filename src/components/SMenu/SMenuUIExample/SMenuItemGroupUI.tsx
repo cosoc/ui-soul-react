@@ -12,7 +12,8 @@ export const SMenuItemGroupUI = <T extends Partial<SMenuItemGroupUIProps>>(props
 
 
     return (
-        <div className={
+        <div
+            className={
             itemKey && currentlyActiveNodePath.has(itemKey) ?
                 styles.containerOnSelect :
                 styles.container} style={{paddingLeft: level ? level * 15 + 15 : 0}}>

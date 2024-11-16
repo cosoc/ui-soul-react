@@ -23,4 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 lib/*
-dis/*
+dist/*
+build/*
+.yarn
