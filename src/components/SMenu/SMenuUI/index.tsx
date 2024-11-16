@@ -1,3 +1,3 @@
-import {SMenuItemGroupUIProps} from "@/components/SMenu/SMenuUI/SMenuItemGroupUIProps";
-import {SMenuItemUIProps} from "@/components/SMenu/SMenuUI/SMenuItemUIProps";
-export type { SMenuItemGroupUIProps,SMenuItemUIProps };
+import {SMenuItemGroupUISoulProps} from "@/components/SMenu/SMenuUI/SMenuItemGroupUISoulProps.ts";
+import {SMenuItemUISoulProps} from "@/components/SMenu/SMenuUI/SMenuItemUISoulProps.ts";
+export type { SMenuItemGroupUISoulProps,SMenuItemUISoulProps };

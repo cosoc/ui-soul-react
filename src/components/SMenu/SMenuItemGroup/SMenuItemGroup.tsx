@@ -81,7 +81,7 @@ export const SMenuItemGroup = (props: SMenuItemGroupProps )=> {
     return (
         <div>
             <div onClick={onClickHandle} onDoubleClick={onDoubleClickHandle}>
-                { React.cloneElement(ui, {...ui?.props, itemKey, level, itemDta, disabled }) }
+                { React.cloneElement(ui, {...ui?.props, itemKey,level,itemDta,disabled}) }
             </div>
             {!currentlyExpandItemGroup.has(itemKey) ? null :
                 <div>

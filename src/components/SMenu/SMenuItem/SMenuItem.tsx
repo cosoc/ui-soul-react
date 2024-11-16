@@ -55,7 +55,7 @@ export const SMenuItem = (props: SMenuItemProps) => {
 
     return (
         <div onClick={onClickHandle} onDoubleClick={onDoubleClickHandle} >
-            { React.cloneElement(ui, {...ui?.props, itemKey, level, itemDta, disabled }) }
+            { React.cloneElement(ui, {...ui?.props, itemKey, level, itemDta, disabled}) }
         </div>
     );
 };
