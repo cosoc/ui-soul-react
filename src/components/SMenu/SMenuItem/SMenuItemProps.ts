@@ -1,4 +1,4 @@
-import {ReactElement} from "react";
+import React, {ReactElement} from "react";
 import {SMenuNodeStatus} from "@/components/SMenu/SMenuModel/SMenuNodeStatus.ts";
 import {SMenuItemType} from "@/components/SMenu/SMenuModel/SMenuItemType.ts";
 
@@ -16,7 +16,7 @@ export interface SMenuItemProps {
     // 是否禁用
     disabled?: boolean;
     // 选项事件处理
-    eventHand?: (itemKey: string, itemTypes: SMenuItemType, status: SMenuNodeStatus, itemDta: any) => void;
+    eventHand?: (event: React.MouseEvent, itemKey: string, itemTypes: SMenuItemType, status: SMenuNodeStatus, itemDta: any) => void;
     // ui组件
     ui: ReactElement;
 }

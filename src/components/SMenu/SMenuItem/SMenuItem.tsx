@@ -1,5 +1,5 @@
 import { SMenuItemProps } from "@/components/SMenu/SMenuItem/SMenuItemProps.ts";
-import React, { useContext } from "react";
+import React, {useContext, useMemo} from "react";
 import { SMenuContext } from "@/components/SMenu/SMenuProvider";
 import { SMenuItemType } from "@/components/SMenu/SMenuModel/SMenuItemType.ts";
 import { SMenuNodeStatus } from "@/components/SMenu/SMenuModel/SMenuNodeStatus.ts";
@@ -11,14 +11,17 @@ export const SMenuItem = (props: SMenuItemProps) => {
         currentlyActiveNodePath,
         setCurrentlyActiveNodePath,
         multipleSelect } = useContext(SMenuContext);
+    const isActivated = useMemo(() => {
+        return currentlyActiveNodePath.has(itemKey);
+    }, [currentlyActiveNodePath]);
 
-    const onClickHandle = () => {
+    const onClickHandle = (event: React.MouseEvent) => {
         // 禁用不做响应
         if (disabled === true) return;
 
         let nodeStatus: SMenuNodeStatus;
 
-        if (isSelected()) {
+        if (isActivated) {
             // 从链路中删除自身
             let updatePath = new Set<string>();
             let updateExpandSet = new Set<string>();
@@ -41,21 +44,27 @@ export const SMenuItem = (props: SMenuItemProps) => {
             setCurrentlyActiveNodePath(updatePath);
             nodeStatus = SMenuNodeStatus.Select;
         }
-        props.eventHand?.(itemKey, SMenuItemType.MenuItem, nodeStatus, itemDta);
+        props.eventHand?.(event,itemKey, SMenuItemType.MenuItem, nodeStatus, itemDta);
     };
 
-    const onDoubleClickHandle = () => {
+    const onDoubleClickHandle = (event: React.MouseEvent) => {
         if (disabled) return;
-        props.eventHand?.(itemKey, SMenuItemType.MenuItem, SMenuNodeStatus.DoubleClick, itemDta);
+        props.eventHand?.(event, itemKey, SMenuItemType.MenuItem, SMenuNodeStatus.DoubleClick, itemDta);
     };
 
-    const isSelected = () : boolean =>{
-        return currentlyActiveNodePath.has(itemKey);
+    const onContextMenuHandle = (event: React.MouseEvent) => {
+        if (disabled) return;
+        props.eventHand?.(event, itemKey, SMenuItemType.MenuItem, SMenuNodeStatus.DoubleClick, itemDta);
     }
 
+
     return (
-        <div onClick={onClickHandle} onDoubleClick={onDoubleClickHandle} >
-            { React.cloneElement(ui, {...ui?.props, itemKey, level, itemDta, disabled}) }
+        <div
+            onClick={onClickHandle}
+            onDoubleClick={onDoubleClickHandle}
+            onContextMenu={onContextMenuHandle}
+        >
+            { React.cloneElement(ui, {...ui?.props, itemKey, level, itemDta, disabled,isActivated}) }
         </div>
     );
 };

@@ -1,5 +1,5 @@
 import {SMenuItemGroupProps} from "@/components/SMenu/SMenuItemGroup/SMenuItemGroupProps";
-import React, {useContext} from "react";
+import React, {useContext, useMemo} from "react";
 import {SMenuItem} from "@/components/SMenu/SMenuItem/SMenuItem";
 import {SMenuItemType} from "@/components/SMenu/SMenuModel/SMenuItemType";
 import {SMenuNodeStatus} from "@/components/SMenu/SMenuModel/SMenuNodeStatus";
@@ -19,14 +19,21 @@ export const SMenuItemGroup = (props: SMenuItemGroupProps )=> {
         currentlyExpandItemGroup,
         setCurrentlyExpandItemGroup,
         exclusiveExpand,
+        currentlyActiveNodePath
     } = useContext(SMenuContext);
+    const isExpand = useMemo(() => {
+        return currentlyExpandItemGroup.has(itemKey);
+    }, [currentlyExpandItemGroup]);
+    const isActivated = useMemo(() => {
+        return currentlyActiveNodePath.has(itemKey);
+    }, [currentlyActiveNodePath]);
 
-    const onClickHandle = () => {
+    const onClickHandle = (event: React.MouseEvent) => {
         // 禁用不做响应
         if (disabled === true) return;
 
         let nodeStatus: SMenuNodeStatus;
-        if (isExpand()) {
+        if (isExpand) {
             // 从展开中删除自己
             let updateExpandSet = new Set<string>();
             currentlyExpandItemGroup.forEach(key => {
@@ -55,16 +62,20 @@ export const SMenuItemGroup = (props: SMenuItemGroupProps )=> {
             }
             nodeStatus=SMenuNodeStatus.Expand;
         }
-        props.eventHand?.(itemKey, SMenuItemType.MenuSubItem, nodeStatus, itemDta);
+        props.eventHand?.(event, itemKey, SMenuItemType.MenuSubItem, nodeStatus, itemDta);
     };
 
-    const onDoubleClickHandle = () => {
+    const onDoubleClickHandle = (event: React.MouseEvent) => {
         if (disabled) return;
-        props.eventHand?.(itemKey, SMenuItemType.MenuSubItem, SMenuNodeStatus.DoubleClick, itemDta);
+        props.eventHand?.(event, itemKey, SMenuItemType.MenuSubItem, SMenuNodeStatus.DoubleClick, itemDta);
     };
+    const onContextMenuHandle = (event: React.MouseEvent) => {
+        if (disabled) return;
+        props.eventHand?.(event, itemKey, SMenuItemType.MenuSubItem, SMenuNodeStatus.DoubleClick, itemDta);
+    }
 
-   const childrenEventHand = (itemKey: string, itemType: SMenuItemType, status: SMenuNodeStatus, itemDta: any) => {
-       props?.eventHand?.(itemKey, itemType,status,itemDta);
+   const childrenEventHand = (event: React.MouseEvent,itemKey: string, itemType: SMenuItemType, status: SMenuNodeStatus, itemDta: any) => {
+       props?.eventHand?.(event, itemKey, itemType,status,itemDta);
    }
 
    const getNodePath = (selfItemKey: string): Set<string> => {
@@ -74,16 +85,18 @@ export const SMenuItemGroup = (props: SMenuItemGroupProps )=> {
        return path;
    }
 
-    const isExpand = () : boolean =>{
-        return currentlyExpandItemGroup.has(itemKey);
-    }
+
 
     return (
         <div>
-            <div onClick={onClickHandle} onDoubleClick={onDoubleClickHandle}>
-                { React.cloneElement(ui, {...ui?.props, itemKey,level,itemDta,disabled}) }
+            <div
+                onClick={onClickHandle}
+                onDoubleClick={onDoubleClickHandle}
+                onContextMenu={onContextMenuHandle}
+            >
+                { React.cloneElement(ui, {...ui?.props, itemKey,level,itemDta,disabled,isExpand,isActivated}) }
             </div>
-            {!currentlyExpandItemGroup.has(itemKey) ? null :
+            {!isExpand ? null :
                 <div>
                     {
                         menuItems?.map(item => {

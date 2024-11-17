@@ -6,7 +6,7 @@ import {SMenuItemType} from "@/components/SMenu/SMenuModel/SMenuItemType";
 import {SMenuNodeStatus} from "@/components/SMenu/SMenuModel/SMenuNodeStatus";
 import {SMenuGen} from "@/components/SMenu/SMenu/SMenuGen.ts";
 import {isIncludesPermissions} from "@/components/SMenu/SMenuUtils/permissionUtils.ts";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {getUI} from "@/components/SMenu/SMenuUtils/sMenuUtils.tsx";
 
 export const SMenu = (props: SMenuProps)=> {
@@ -18,8 +18,8 @@ export const SMenu = (props: SMenuProps)=> {
         defaultItemGroupUI }  = props;
     const [ nods, setNodes]  = useState<Array<SMenuGen>>([]);
 
-    const childrenEventHand = (itemKey: string, itemType: SMenuItemType, status: SMenuNodeStatus, itemDta: any) => {
-        props?.eventHand?.(itemKey, itemType,status,itemDta);
+    const childrenEventHand = (event:React.MouseEvent,itemKey: string, itemType: SMenuItemType, status: SMenuNodeStatus, itemDta: any) => {
+        props?.eventHand?.(event,itemKey, itemType,status,itemDta);
     }
 
 
