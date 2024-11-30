@@ -1,4 +1,6 @@
 import {ReactElement} from "react";
+import {SMenuItemConfig} from "@/components/SMenu/SMenuItem/SMenuItemConfig.ts";
+import {SMenuItemGroupConfig} from "@/components/SMenu/SMenuItemGroup/SMenuItemGroupConfig.ts";
 
 // 菜单生成
 export interface SMenuGen {
@@ -14,6 +16,8 @@ export interface SMenuGen {
     ui?: ReactElement;
     // ui要传递的属性
     uiProps?: Object;
+    // 选项配置
+    nodeConfig?: SMenuItemGroupConfig | SMenuItemConfig;
     // 如果是选项组需要传入children
     children?: Array<SMenuGen>;
 }

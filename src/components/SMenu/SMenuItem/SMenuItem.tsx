@@ -5,7 +5,7 @@ import { SMenuItemType } from "@/components/SMenu/SMenuModel/SMenuItemType.ts";
 import { SMenuNodeStatus } from "@/components/SMenu/SMenuModel/SMenuNodeStatus.ts";
 
 export const SMenuItem = (props: SMenuItemProps) => {
-    const { itemKey,level, nodePath, disabled, itemDta, ui } = props;
+    const { itemKey,level, nodePath, disabled, itemDta, ui, nodeConfig } = props;
 
     const {
         currentlyActiveNodePath,
@@ -63,8 +63,9 @@ export const SMenuItem = (props: SMenuItemProps) => {
             onClick={onClickHandle}
             onDoubleClick={onDoubleClickHandle}
             onContextMenu={onContextMenuHandle}
+            style={{width:"100%",flexShrink: 0}}
         >
-            { React.cloneElement(ui, {...ui?.props, itemKey, level, itemDta, disabled,isActivated}) }
+            { React.cloneElement(ui, {...ui?.props, itemKey, level, itemDta, disabled,isActivated,nodeConfig}) }
         </div>
     );
 };

@@ -1,9 +1,16 @@
+/** @jsxImportSource @emotion/react */
 import {SMenuItemGroupProps} from "@/components/SMenu/SMenuItemGroup/SMenuItemGroupProps";
 import React, {useContext, useMemo} from "react";
 import {SMenuItem} from "@/components/SMenu/SMenuItem/SMenuItem";
 import {SMenuItemType} from "@/components/SMenu/SMenuModel/SMenuItemType";
 import {SMenuNodeStatus} from "@/components/SMenu/SMenuModel/SMenuNodeStatus";
 import {SMenuContext} from "@/components/SMenu/SMenuProvider";
+import {
+    SMenuItemGroupContainerDefaultStyle
+} from "@/components/SMenu/SMenuStyle/SMenuItemGroupContainer.default.style.ts";
+import {
+    SMenuItemGroupChildContainerDefaultStyle
+} from "@/components/SMenu/SMenuStyle/SMenuItemGroupChildContainer.default.style.ts";
 
 export const SMenuItemGroup = (props: SMenuItemGroupProps )=> {
 
@@ -13,7 +20,8 @@ export const SMenuItemGroup = (props: SMenuItemGroupProps )=> {
             ui,
             menuItems,
             disabled,
-            nodePath
+            nodePath,
+            nodeConfig,
     } = props;
     const {
         currentlyExpandItemGroup,
@@ -27,6 +35,7 @@ export const SMenuItemGroup = (props: SMenuItemGroupProps )=> {
     const isActivated = useMemo(() => {
         return currentlyActiveNodePath.has(itemKey);
     }, [currentlyActiveNodePath]);
+
 
     const onClickHandle = (event: React.MouseEvent) => {
         // 禁用不做响应
@@ -85,46 +94,59 @@ export const SMenuItemGroup = (props: SMenuItemGroupProps )=> {
        return path;
    }
 
-
-
     return (
-        <div>
+        <div
+            style={nodeConfig?.itemGroupContainerStyle}
+            css={[
+              SMenuItemGroupContainerDefaultStyle({itemGroupChildExpansionDirection: nodeConfig?.itemGroupChildExpansionDirection})
+           ]}
+        >
             <div
+                style={{ width: '100%', flexShrink: 0}}
                 onClick={onClickHandle}
                 onDoubleClick={onDoubleClickHandle}
                 onContextMenu={onContextMenuHandle}
             >
-                { React.cloneElement(ui, {...ui?.props, itemKey,level,itemDta,disabled,isExpand,isActivated}) }
+                { React.cloneElement(ui, {...ui?.props, itemKey,level,itemDta,disabled,isExpand,isActivated,nodeConfig}) }
             </div>
             {!isExpand ? null :
-                <div>
+                <div
+                    style={nodeConfig?.itemGroupChildContainerStyle}
+                    css={[
+                    SMenuItemGroupChildContainerDefaultStyle({
+                        itemGroupChildExpansionDirection: nodeConfig?.itemGroupChildExpansionDirection,
+                        itemGroupChildLayoutDirection: nodeConfig?.itemGroupChildLayoutDirection
+                    })
+                ]}>
                     {
                         menuItems?.map(item => {
                             if (item.children) {
-                               return <SMenuItemGroup
-                                            key={item.itemKey}
-                                            itemKey={item.itemKey}
-                                            level={level + 1}
-                                            parentNodeItemKey={itemKey}
-                                            nodePath={getNodePath(item.itemKey)}
-                                            itemDta={item.itemDta}
-                                            disabled={item.disabled}
-                                            eventHand={childrenEventHand}
-                                            menuItems={item.children}
-                                            ui={item.ui as any}
-                                        />
+                                return <SMenuItemGroup
+                                    key={item.itemKey}
+                                    itemKey={item.itemKey}
+                                    level={level + 1}
+                                    parentNodeItemKey={itemKey}
+                                    nodePath={getNodePath(item.itemKey)}
+                                    itemDta={item.itemDta}
+                                    disabled={item.disabled}
+                                    eventHand={childrenEventHand}
+                                    menuItems={item.children}
+                                    nodeConfig={item.nodeConfig}
+                                    ui={item.ui as any}
+                                />
                             }
                             return <SMenuItem
-                                        key={item.itemKey}
-                                        itemKey={item.itemKey}
-                                        level={level + 1}
-                                        parentNodeItemKey={itemKey}
-                                        nodePath={getNodePath(item.itemKey)}
-                                        itemDta={item.itemDta}
-                                        disabled={item.disabled}
-                                        eventHand={childrenEventHand}
-                                        ui={item.ui as any}
-                                    />
+                                key={item.itemKey}
+                                itemKey={item.itemKey}
+                                level={level + 1}
+                                parentNodeItemKey={itemKey}
+                                nodePath={getNodePath(item.itemKey)}
+                                itemDta={item.itemDta}
+                                disabled={item.disabled}
+                                eventHand={childrenEventHand}
+                                nodeConfig={item.nodeConfig}
+                                ui={item.ui as any}
+                            />
                         })
                     }
                 </div>

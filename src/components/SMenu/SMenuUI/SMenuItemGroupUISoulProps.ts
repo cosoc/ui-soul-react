@@ -1,3 +1,4 @@
+import {SMenuItemGroupConfig} from "@/components/SMenu/SMenuItemGroup/SMenuItemGroupConfig.ts";
 
 export interface SMenuItemGroupUISoulProps {
     // 唯一key
@@ -12,4 +13,6 @@ export interface SMenuItemGroupUISoulProps {
     itemDta?: any;
     // 是否禁用
     disabled?: boolean;
+    // 选项配置
+    nodeConfig?: SMenuItemGroupConfig;
 }

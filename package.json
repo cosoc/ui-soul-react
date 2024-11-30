@@ -12,12 +12,13 @@
     "*.scss",
     "*.sass"
   ],
-  "main": "./lib/index.js",
-  "module": "./lib/index.js",
+  "main": "./lib/index.cjs.js",
+  "module": "./lib/index.es.js",
   "types": "./lib/index.d.ts",
   "exports": {
     ".": {
-      "import": "./lib/index.js",
+      "import": "./lib/index.es.js",
+      "require": "./lib/index.cjs.js",
       "types": "./lib/index.d.ts"
     }
   },

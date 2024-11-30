@@ -34,19 +34,42 @@ export default defineConfig({
       entry: path.resolve(__dirname, 'src/index.tsx'),
       name: 'UISoulReact',
       fileName: 'ui-soul-react',
-      formats: ['es'],
     },
     rollupOptions: {
       external: ['react', 'react-dom','react/jsx-runtime'],
-      output: {
-        entryFileNames: '[name].js',
-        assetFileNames: 'assets/[name][extname]',
-        globals: {
-          react: 'react',
-          'react-dom': 'react-dom',
-          'react/jsx-runtime': 'react/jsx-runtime',
+      output: [
+        {
+          format: 'es',
+          entryFileNames: '[name].es.js',
+          dir: 'lib',
+          globals: {
+            react: 'react',
+            'react-dom': 'react-dom',
+            'react/jsx-runtime': 'react/jsx-runtime',
+          },
         },
-      },
+        {
+          format: 'cjs',
+          entryFileNames: '[name].cjs.js',
+          dir: 'lib',
+          globals: {
+            react: 'react',
+            'react-dom': 'react-dom',
+            'react/jsx-runtime': 'react/jsx-runtime',
+          },
+        },
+        {
+          format: 'umd',
+          entryFileNames: '[name].umd.js',
+          dir: 'lib',
+          name: 'UISoulReact',
+          globals: {
+            react: 'react',
+            'react-dom': 'react-dom',
+            'react/jsx-runtime': 'react/jsx-runtime',
+          },
+        },
+      ]
     },
   }
 })

@@ -2,6 +2,7 @@ import {SMenuItemType} from "@/components/SMenu/SMenuModel/SMenuItemType.ts";
 import {SMenuGen} from "@/components/SMenu/SMenu/SMenuGen.ts";
 import {SMenuNodeStatus} from "@/components/SMenu/SMenuModel/SMenuNodeStatus.ts";
 import React, {CSSProperties} from "react";
+import TwoDimensionalDirection from "@/model/TwoDimensionalDirection.ts";
 
 // 菜单组件参数
 export interface SMenuProps {
@@ -15,6 +16,14 @@ export interface SMenuProps {
     defaultItemGroupUI: React.ComponentType<any>;
     // 获取菜单拥有的权限池
     getPermissionPool?: () => Promise<Array<string>>;
-    // 样式
-    style?: CSSProperties | undefined;
+    // 菜单容器样式
+    style?: CSSProperties;
+    // 选项组子节点展开方方向
+    itemGroupChildExpansionDirection?: TwoDimensionalDirection;
+    // 选项组子节点布局方向
+    itemGroupChildLayoutDirection?: TwoDimensionalDirection;
+    // 选项组容器样式
+    itemGroupContainerStyle?: CSSProperties;
+    // 选项组子节点容器样式
+    itemGroupChildContainerStyle?: CSSProperties;
 }

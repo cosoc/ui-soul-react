@@ -1,3 +1,4 @@
+import {SMenuItemConfig} from "@/components/SMenu/SMenuItem/SMenuItemConfig.ts";
 
 export interface SMenuItemUISoulProps {
     // 唯一key
@@ -10,4 +11,6 @@ export interface SMenuItemUISoulProps {
     disabled?: boolean;
     // 是否激活
     isActivated: boolean;
+    // 选项配置
+    nodeConfig?: SMenuItemConfig;
 }

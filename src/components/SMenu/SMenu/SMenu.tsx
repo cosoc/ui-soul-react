@@ -6,7 +6,7 @@ import {SMenuItemType} from "@/components/SMenu/SMenuModel/SMenuItemType";
 import {SMenuNodeStatus} from "@/components/SMenu/SMenuModel/SMenuNodeStatus";
 import {SMenuGen} from "@/components/SMenu/SMenu/SMenuGen.ts";
 import {isIncludesPermissions} from "@/components/SMenu/SMenuUtils/permissionUtils.ts";
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState} from "react";
 import {getUI} from "@/components/SMenu/SMenuUtils/sMenuUtils.tsx";
 
 export const SMenu = (props: SMenuProps)=> {
@@ -15,7 +15,12 @@ export const SMenu = (props: SMenuProps)=> {
         style,
         getPermissionPool,
         defaultItemUI,
-        defaultItemGroupUI }  = props;
+        defaultItemGroupUI,
+        itemGroupChildExpansionDirection,
+        itemGroupChildLayoutDirection,
+        itemGroupContainerStyle,
+        itemGroupChildContainerStyle
+    }  = props;
     const [ nods, setNodes]  = useState<Array<SMenuGen>>([]);
 
     const childrenEventHand = (event:React.MouseEvent,itemKey: string, itemType: SMenuItemType, status: SMenuNodeStatus, itemDta: any) => {
@@ -75,6 +80,32 @@ export const SMenu = (props: SMenuProps)=> {
         }
     }
 
+    /**
+     * 预处理默认参数
+     * @param nodes
+     */
+    const defaultValuePretreatment = (nodes: Array<SMenuGen>) => {
+        for (let node of nodes) {
+            if (node.children) {
+                if (!node.nodeConfig) {
+                    node.nodeConfig = {
+                        itemGroupChildExpansionDirection: itemGroupChildExpansionDirection,
+                        itemGroupChildLayoutDirection: itemGroupChildLayoutDirection,
+                        itemGroupContainerStyle: itemGroupContainerStyle,
+                        itemGroupChildContainerStyle: itemGroupChildContainerStyle
+                    }
+                }
+                defaultValuePretreatment(node.children);
+            }else {
+                if (!node.nodeConfig) {
+                    node.nodeConfig = {
+                        itemGroupChildExpansionDirection: itemGroupChildExpansionDirection,
+                        itemGroupChildLayoutDirection: itemGroupChildLayoutDirection
+                    }
+                }
+            }
+        }
+    }
 
     /**
      * 节点预处理
@@ -87,6 +118,8 @@ export const SMenu = (props: SMenuProps)=> {
         const pool = await getPermissionPool?.();
         let nodes =  Object.assign([],menuNodes);
         permissionsPretreatment(pool,nodes);
+        // 处理默认值
+        defaultValuePretreatment(nodes);
         // ui预处理
         // 处理ui,如果用户特定选项提供了ui则使用他提供的ui
         // 并且会忽略uiProps
@@ -98,7 +131,6 @@ export const SMenu = (props: SMenuProps)=> {
     useEffect(() => {
         menuNodesPretreatment().then();
     }, [menuNodes]);
-
 
     return (
         <SMenuProvider>
@@ -116,6 +148,7 @@ export const SMenu = (props: SMenuProps)=> {
                                         disabled={item.disabled}
                                         eventHand={childrenEventHand}
                                         menuItems={item.children}
+                                        nodeConfig={item.nodeConfig}
                                         ui={item.ui as any}
                                     />
                         }
@@ -128,6 +161,7 @@ export const SMenu = (props: SMenuProps)=> {
                                     itemDta={item.itemDta}
                                     disabled={item.disabled}
                                     eventHand={childrenEventHand}
+                                    nodeConfig={item.nodeConfig}
                                     ui={item.ui as any}
                                 />
                     })

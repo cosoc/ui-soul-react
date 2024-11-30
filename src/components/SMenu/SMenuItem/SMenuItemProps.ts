@@ -1,6 +1,8 @@
 import React, {ReactElement} from "react";
 import {SMenuNodeStatus} from "@/components/SMenu/SMenuModel/SMenuNodeStatus.ts";
 import {SMenuItemType} from "@/components/SMenu/SMenuModel/SMenuItemType.ts";
+import {SMenuItemGroupConfig} from "@/components/SMenu/SMenuItemGroup/SMenuItemGroupConfig.ts";
+import {SMenuItemConfig} from "@/components/SMenu/SMenuItem/SMenuItemConfig.ts";
 
 export interface SMenuItemProps {
     // 唯一key
@@ -19,4 +21,6 @@ export interface SMenuItemProps {
     eventHand?: (event: React.MouseEvent, itemKey: string, itemTypes: SMenuItemType, status: SMenuNodeStatus, itemDta: any) => void;
     // ui组件
     ui: ReactElement;
+    // 选项配置
+    nodeConfig?: SMenuItemGroupConfig | SMenuItemConfig;
 }

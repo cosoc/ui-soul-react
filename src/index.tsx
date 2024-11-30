@@ -5,3 +5,4 @@ export * from  "@/components/SMenu/SMenuModel";
 export * from  "@/components/SMenu/SMenuProvider";
 export * from  "@/components/SMenu/SMenuModel";
 export * from  "@/components/SMenu/SMenuUI";
+export * from  "@/model/index.tsx";

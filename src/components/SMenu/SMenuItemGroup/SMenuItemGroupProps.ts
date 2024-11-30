@@ -2,6 +2,7 @@ import React, {ReactElement} from "react";
 import {SMenuGen} from "@/components/SMenu/SMenu/SMenuGen.ts";
 import {SMenuItemType} from "@/components/SMenu/SMenuModel/SMenuItemType.ts";
 import {SMenuNodeStatus} from "@/components/SMenu/SMenuModel/SMenuNodeStatus.ts";
+import {SMenuItemGroupConfig} from "@/components/SMenu/SMenuItemGroup/SMenuItemGroupConfig.ts";
 
 export interface SMenuItemGroupProps {
     // 唯一key
@@ -22,4 +23,6 @@ export interface SMenuItemGroupProps {
     menuItems?: Array<SMenuGen>;
     // ui组件
     ui: ReactElement;
+    // 选项配置
+    nodeConfig?: SMenuItemGroupConfig;
 }
