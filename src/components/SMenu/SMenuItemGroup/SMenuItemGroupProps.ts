@@ -18,7 +18,7 @@ export interface SMenuItemGroupProps {
     // 是否禁用
     disabled?: boolean;
     // 子菜单选项
-    eventHand?: (event: React.MouseEvent, itemKey: string, itemTypes: SMenuItemType, status: SMenuNodeStatus, itemDta: any) => void;
+    eventHandler?: (event: React.MouseEvent, itemKey: string, itemTypes: SMenuItemType, status: SMenuNodeStatus, itemDta: any) => void;
     // 选项
     menuItems?: Array<SMenuGen>;
     // ui组件

@@ -24,7 +24,7 @@ export const SMenu = (props: SMenuProps)=> {
     const [ nods, setNodes]  = useState<Array<SMenuGen>>([]);
 
     const childrenEventHand = (event:React.MouseEvent,itemKey: string, itemType: SMenuItemType, status: SMenuNodeStatus, itemDta: any) => {
-        props?.eventHand?.(event,itemKey, itemType,status,itemDta);
+        props?.eventHandler?.(event,itemKey, itemType,status,itemDta);
     }
 
 
@@ -146,7 +146,7 @@ export const SMenu = (props: SMenuProps)=> {
                                         nodePath={new Set<string>().add(item.itemKey)}
                                         itemDta={item.itemDta}
                                         disabled={item.disabled}
-                                        eventHand={childrenEventHand}
+                                        eventHandler={childrenEventHand}
                                         menuItems={item.children}
                                         nodeConfig={item.nodeConfig}
                                         ui={item.ui as any}
@@ -160,7 +160,7 @@ export const SMenu = (props: SMenuProps)=> {
                                     nodePath={new Set<string>().add(item.itemKey)}
                                     itemDta={item.itemDta}
                                     disabled={item.disabled}
-                                    eventHand={childrenEventHand}
+                                    eventHandler={childrenEventHand}
                                     nodeConfig={item.nodeConfig}
                                     ui={item.ui as any}
                                 />

@@ -18,7 +18,7 @@ export interface SMenuItemProps {
     // 是否禁用
     disabled?: boolean;
     // 选项事件处理
-    eventHand?: (event: React.MouseEvent, itemKey: string, itemTypes: SMenuItemType, status: SMenuNodeStatus, itemDta: any) => void;
+    eventHandler?: (event: React.MouseEvent, itemKey: string, itemTypes: SMenuItemType, status: SMenuNodeStatus, itemDta: any) => void;
     // ui组件
     ui: ReactElement;
     // 选项配置

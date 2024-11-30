@@ -44,17 +44,17 @@ export const SMenuItem = (props: SMenuItemProps) => {
             setCurrentlyActiveNodePath(updatePath);
             nodeStatus = SMenuNodeStatus.Select;
         }
-        props.eventHand?.(event,itemKey, SMenuItemType.MenuItem, nodeStatus, itemDta);
+        props.eventHandler?.(event,itemKey, SMenuItemType.MenuItem, nodeStatus, itemDta);
     };
 
     const onDoubleClickHandle = (event: React.MouseEvent) => {
         if (disabled) return;
-        props.eventHand?.(event, itemKey, SMenuItemType.MenuItem, SMenuNodeStatus.DoubleClick, itemDta);
+        props.eventHandler?.(event, itemKey, SMenuItemType.MenuItem, SMenuNodeStatus.DoubleClick, itemDta);
     };
 
     const onContextMenuHandle = (event: React.MouseEvent) => {
         if (disabled) return;
-        props.eventHand?.(event, itemKey, SMenuItemType.MenuItem, SMenuNodeStatus.DoubleClick, itemDta);
+        props.eventHandler?.(event, itemKey, SMenuItemType.MenuItem, SMenuNodeStatus.DoubleClick, itemDta);
     }
 
 

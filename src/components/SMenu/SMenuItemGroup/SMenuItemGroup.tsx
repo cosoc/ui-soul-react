@@ -71,20 +71,20 @@ export const SMenuItemGroup = (props: SMenuItemGroupProps )=> {
             }
             nodeStatus=SMenuNodeStatus.Expand;
         }
-        props.eventHand?.(event, itemKey, SMenuItemType.MenuSubItem, nodeStatus, itemDta);
+        props.eventHandler?.(event, itemKey, SMenuItemType.MenuSubItem, nodeStatus, itemDta);
     };
 
     const onDoubleClickHandle = (event: React.MouseEvent) => {
         if (disabled) return;
-        props.eventHand?.(event, itemKey, SMenuItemType.MenuSubItem, SMenuNodeStatus.DoubleClick, itemDta);
+        props.eventHandler?.(event, itemKey, SMenuItemType.MenuSubItem, SMenuNodeStatus.DoubleClick, itemDta);
     };
     const onContextMenuHandle = (event: React.MouseEvent) => {
         if (disabled) return;
-        props.eventHand?.(event, itemKey, SMenuItemType.MenuSubItem, SMenuNodeStatus.DoubleClick, itemDta);
+        props.eventHandler?.(event, itemKey, SMenuItemType.MenuSubItem, SMenuNodeStatus.DoubleClick, itemDta);
     }
 
    const childrenEventHand = (event: React.MouseEvent,itemKey: string, itemType: SMenuItemType, status: SMenuNodeStatus, itemDta: any) => {
-       props?.eventHand?.(event, itemKey, itemType,status,itemDta);
+       props?.eventHandler?.(event, itemKey, itemType,status,itemDta);
    }
 
    const getNodePath = (selfItemKey: string): Set<string> => {
@@ -129,7 +129,7 @@ export const SMenuItemGroup = (props: SMenuItemGroupProps )=> {
                                     nodePath={getNodePath(item.itemKey)}
                                     itemDta={item.itemDta}
                                     disabled={item.disabled}
-                                    eventHand={childrenEventHand}
+                                    eventHandler={childrenEventHand}
                                     menuItems={item.children}
                                     nodeConfig={item.nodeConfig}
                                     ui={item.ui as any}
@@ -143,7 +143,7 @@ export const SMenuItemGroup = (props: SMenuItemGroupProps )=> {
                                 nodePath={getNodePath(item.itemKey)}
                                 itemDta={item.itemDta}
                                 disabled={item.disabled}
-                                eventHand={childrenEventHand}
+                                eventHandler={childrenEventHand}
                                 nodeConfig={item.nodeConfig}
                                 ui={item.ui as any}
                             />

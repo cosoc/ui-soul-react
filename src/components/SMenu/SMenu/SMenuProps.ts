@@ -7,7 +7,7 @@ import TwoDimensionalDirection from "@/model/TwoDimensionalDirection.ts";
 // 菜单组件参数
 export interface SMenuProps {
     // 选项被点击
-    eventHand?: (event: React.MouseEvent, itemKey: string, itemTypes: SMenuItemType, status: SMenuNodeStatus, itemDta: any) => void;
+    eventHandler?: (event: React.MouseEvent, itemKey: string, itemTypes: SMenuItemType, status: SMenuNodeStatus, itemDta: any) => void;
     // 菜单节点列表
     menuNodes: Array<SMenuGen>;
     // 选项默认使用的组件,如果选项设置了自己的UI将被忽略
